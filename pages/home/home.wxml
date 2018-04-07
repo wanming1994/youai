@@ -1,0 +1,9 @@
+<view class="container">
+  <block wx:for="{{productHotList}}" wx:key="id" wx:for-item="item">
+    <view class='break'></view>
+    <view class='imageTwo productList' bindtap='goProductDeatil' data-id="{{item.id}}">
+      <image src='{{item.primary_pic_url}}' mode="widthFix"></image>
+    </view>
+  </block>
+</view>
+
