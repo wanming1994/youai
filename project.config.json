@@ -82,6 +82,12 @@
 					"name": "付款页",
 					"pathName": "pages/pay/orderPay",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "gf",
+					"pathName": "pages/home/productDetails/productDetails",
+					"query": ""
 				}
 			]
 		}

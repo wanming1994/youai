@@ -91,6 +91,9 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
 .f22 {
   font-size: 44rpx;
 }
+.f24 {
+  font-size: 48rpx;
+}
 
 .f40 {
   font-size: 80rpx;

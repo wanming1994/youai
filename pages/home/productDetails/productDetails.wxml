@@ -13,20 +13,91 @@
       </swiper-item>
     </block>
   </swiper>
-  <view class="title box-b clr_titleWhite f18 ">
-    <view class='padding2'>{{productData.info.name}}</view>
-    <view class="lineItem padding0" style='border-top:1px solid #cfcfcf;border-bottom:1px solid #cfcfcf;'>
-      <view class="left lineH_two" style='align-items:center;width:100%;position:relative;'>
-        <text class="clr_orange f20 bold fl" style='margin-left:2vw;'>￥{{productData.info.retail_price}}</text>
-      </view>
-      <view class="center"></view>
-      <view class="right f14 clr_lightGray"></view>
+
+  <view class="title  tc">
+    <view class='padding2 bold f24'>2018明基孕妈VIP年度孕产妈妈公开课</view>
+  </view>
+
+  <view class='lineItem info_shop'>
+    <view class='left'>
+      <image src='/resources/images/usernone.png'></image>
+    </view>
+    <view class='center'>
+      <view class='f16'>明基孕妈</view>
+      <view class='f12 clr_lightGray'>让孕育旅程简单快乐</view>
+    </view>
+    <view class='right'>
+    </view>
+  </view>
+  <view class='lineItem info_time'>
+    <view class='left'>
+      <text class='iconfont icon-shijian'></text>
+    </view>
+    <view class='center'>
+      <view class='f12 clr_lightGray'>2018.03.31 13:00:00</view>
+    </view>
+    <view class='right'>
+    </view>
+  </view>
+  <view class='lineItem info_address'>
+    <view class='left'>
+      <text class='iconfont icon-dizhi1'></text>
+      <!-- <image src='/resources/images/usernone.png'></image> -->
+    </view>
+    <view class='center'>
+      <view class='f12 clr_lightGray'>苏州市相城区白金汉爵酒店会议厅401-406</view>
+    </view>
+    <view class='right' style='border-left:1px solid #f5f5f5;padding-left:5px;'>
+      <text class='iconfont icon-daohang1 baseColor'></text>
+    </view>
+  </view>
+  <view class='lineItem info_phone'>
+    <view class='left'>
+      <text class='iconfont icon-wo'></text>
+    </view>
+    <view class='center'>
+      <view class='f12 clr_lightGray'>400-963-8683</view>
+    </view>
+    <view class='right' style='border-left:1px solid #f5f5f5;padding-left:5px;'>
+      <text class='iconfont icon-dianhua baseColor'></text>
+    </view>
+  </view>
+
+  <view class='mom_list'>
+    <view class='f16 bold tc'>明基孕妈</view>
+    <view class='f14 tc'>已报名：<text class='baseColor f16'>453</text>/1000</view>
+    <view class='mom_list_item'>
+      <image src='/resources/images/usernone.png'></image>
+      <image src='/resources/images/usernone.png'></image>
+      <image src='/resources/images/usernone.png'></image>
+      <image src='/resources/images/usernone.png'></image>
+      <image src='/resources/images/usernone.png'></image>
+      <image src='/resources/images/usernone.png'></image>
+      <image src='/resources/images/usernone.png'></image>
+      <image src='/resources/images/usernone.png'></image>
+      <image src='/resources/images/usernone.png'></image>
+      <image src='/resources/images/usernone.png'></image>
+      <image src='/resources/images/usernone.png'></image>
+      <image src='/resources/images/usernone.png'></image>
+      <image src='/resources/images/usernone.png'></image>
+      <image src='/resources/images/usernone.png'></image>
+      <image src='/resources/images/usernone.png'></image>
+      <image src='/resources/images/usernone.png'></image>
+      <image src='/resources/images/usernone.png'></image>
+      <image src='/resources/images/usernone.png'></image>
+      <image src='/resources/images/usernone.png'></image>
+      <image src='/resources/images/usernone.png'></image>
+      <image src='/resources/images/usernone.png'></image>
+      <image src='/resources/images/usernone.png'></image>
+      <image src='/resources/images/usernone.png'></image>
+      <image src='/resources/images/usernone.png'></image>
     </view>
   </view>
 
 
-  <view class='product_introduction' wx:if="{{introduction}}">
-    <view class='title f14 tc padding2'>宝贝详情</view>
+<view class='product_introduction'>
+  <!-- <view class='product_introduction' wx:if="{{introduction}}"> -->
+    <view class='title f16 bold tc padding2'>活动介绍</view>
     <view class="wxParse content">
       <template is="wxParse" data="{{wxParseData:introduction.nodes}}" />
       <!-- <template is="wxParse" data="{{wxParseData:introduction.nodes}}" /> -->
