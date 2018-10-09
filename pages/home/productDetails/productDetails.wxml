@@ -7,15 +7,15 @@
 <view style='padding-bottom:104rpx;'>
   <swiper circular indicator-active-color="rgba(255,255,255,0.6)" indicator-dots="{{showDot?showDot:false}}" autoplay="{{autoplay?autoplay:true}}" interval="{{interval?interval:3500}}" style="height:{{name?_swiper[name].height+'px':_swiper['swiper'].height+'px'}};"
     class="adSwiper">
-    <block wx:for="{{productData.gallery}}" wx:key="{{key?key:*this}}" wx:if="{{productData.gallery.length}}">
+    <block>
       <swiper-item>
-        <image data-name="{{name?name:'swiper'}}" bindload="_adswiperimageload" mode="widthFix" src="{{item.img_url}}"></image>
+        <image data-name="{{name?name:'swiper'}}" bindload="_adswiperimageload" mode="widthFix" src="{{productData.item_pic_url}}"></image>
       </swiper-item>
     </block>
   </swiper>
 
   <view class="title  tc">
-    <view class='padding2 bold f24'>2018明基孕妈VIP年度孕产妈妈公开课</view>
+    <view class='padding2 bold f24'>{{}}</view>
   </view>
 
   <view class='lineItem info_shop'>

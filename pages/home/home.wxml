@@ -2,8 +2,9 @@
   <block wx:for="{{productHotList}}" wx:key="id" wx:for-item="item">
     <view class='break'></view>
     <view class='imageTwo productList' bindtap='goProductDeatil' data-id="{{item.id}}">
-      <image src='{{item.primary_pic_url}}' mode="widthFix"></image>
+      <image src="{{item.avatar?item.avatar:'/resources/images/noneimg.png'}}" mode="widthFix"></image>
+      <view class='f16 bold clr-white title'>{{item.title}}</view>
     </view>
   </block>
+  <view class="tips" hidden="{{showtips}}">{{tips}}</view>
 </view>
-

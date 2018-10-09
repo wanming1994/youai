@@ -1,15 +1,17 @@
 let Ajax = require('./ajax.js')
 
 module.exports = class Product extends Ajax {
-  
+
 
   /**
   * 商品热销列表
+  size=10
+  page=1
   *
   */
   list(data) {
     super.get({
-      url: 'index/index',
+      url: 'topic/list',
       data: data
     });
   }
@@ -21,7 +23,7 @@ module.exports = class Product extends Ajax {
    */
   view(data) {
     super.get({
-      url: 'goods/detail',
+      url: 'topic/detail',
       data: data
     });
   }
@@ -37,7 +39,7 @@ module.exports = class Product extends Ajax {
       data: data
     });
   }
-  
+
 
   /**
    * 商品详情页分享
@@ -147,16 +149,16 @@ module.exports = class Product extends Ajax {
     });
   }
 
-    /**
-     * 获取推荐，搭配商品列表
-     * id 商品Id
-     */
-    recommend(data) {
-        super.get({
-            url: 'applet/product/recommend.jhtml',
-            data: data
-        });
-    }
+  /**
+   * 获取推荐，搭配商品列表
+   * id 商品Id
+   */
+  recommend(data) {
+    super.get({
+      url: 'applet/product/recommend.jhtml',
+      data: data
+    });
+  }
 
 
 }

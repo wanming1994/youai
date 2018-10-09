@@ -35,43 +35,42 @@ Page(Object.assign({}, swiperAutoHeight, {
   },
 
   onLoad: function (options) {
-    if (app.globalData.LOGIN_STATUS) {
-      this.getData(options)
-    } else {
-      app.loginOkCallbackList.push(() => {
-        this.getData(options)
-      })
-    }
-    console.log(this.data.productData.gallery)
-
+    // if (app.globalData.LOGIN_STATUS) {
+    //   this.getData(options)
+    // } else {
+    //   app.loginOkCallbackList.push(() => {
+    //     this.getData(options)
+    //   })
+    // }
+    this.getData(options)
   },
-  // getData(options){
-  //   let that = this;
-  //   let id = options.id;
-  //   this.data.id = id;
-  //   var extension = options.extension;
-  //   new Product((res) => {
-  //     wx.setNavigationBarTitle({
-  //       title: res.data.info.name
-  //     })
-  //     var introduction = res.data.info.goods_desc
-  //     this.setData({
-  //       productData: res.data,
-  //       introduction: res.data.info.goods_desc
-  //     })
+  getData(options){
+    let that = this;
+    let id = options.id;
+    this.data.id = id;
+    var extension = options.extension;
+    new Product((res) => {
+      wx.setNavigationBarTitle({
+        title: res.data.title
+      })
+      var introduction = res.data.content
+      this.setData({
+        productData: res.data,
+        introduction: res.data.content
+      })
 
-  //     if (introduction != null) {
-  //       WxParse.wxParse('introduction', 'html', introduction, that, 5);
-  //     }
-  //     setTimeout(res => {
-  //       this.setData({
-  //         pageLoad: true
-  //       })
-  //     }, 200)
-  //   }).view({
-  //     id: id
-  //   })
-  // },
+      if (introduction != null) {
+        WxParse.wxParse('introduction', 'html', introduction, that, 5);
+      }
+      setTimeout(res => {
+        this.setData({
+          pageLoad: true
+        })
+      }, 200)
+    }).view({
+      id: id
+    })
+  },
 
   /**
   * 页面上拉触底事件的处理函数
