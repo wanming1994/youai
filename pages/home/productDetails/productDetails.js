@@ -34,10 +34,22 @@ Page(Object.assign({}, swiperAutoHeight, {
   },
   //确认
   confirm: function() {
-    this.setData({
-      hiddenmodalput: true,
-      autoFoucs: false
-    })
+    var phone = this.data.mobile
+    if (!(/^1[3456789]\d{9}$/.test(phone))) {
+      wx.showToast({
+        title: '手机号错误',
+        icon: 'none'
+      })
+    } else {
+      this.setData({
+        hiddenmodalput: true,
+        autoFoucs: false
+      })
+      wx.showToast({
+        title: '报名成功',
+        icon: 'success'
+      })
+    }
   },
   mobile(e) {
     this.setData({

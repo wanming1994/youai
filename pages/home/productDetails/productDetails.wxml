@@ -127,7 +127,7 @@
 
 <modal id="modal" hidden="{{hiddenmodalput}}" title="报名信息" confirm-text="提交" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm">
   <!-- <input type='text' placeholder="姓名：" auto-focus/> -->
-  <input type='number' placeholder="请输入电话:" bindinput='mobile' maxlength='11' auto-focus="{{autoFoucs}}" style='color:#333;' />
+  <input type='number' placeholder="请输入电话:" bindinput='mobile' maxlength='11' focus="{{autoFoucs}}" style='color:#333;' />
   <!-- <input type='text' placeholder="人数：" auto-focus/> -->
   <!-- <input type='text' placeholder="时间：" auto-focus/> -->
 </modal>
