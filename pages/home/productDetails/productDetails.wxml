@@ -34,7 +34,7 @@
       <text class='iconfont icon-shijian'></text>
     </view>
     <view class='center'>
-      <view class='f12 clr_lightGray'>2018.03.31 13:00:00</view>
+      <view class='f12 clr_lightGray'>{{productData.info.activityTime}}</view>
     </view>
     <view class='right'>
     </view>
@@ -45,7 +45,7 @@
       <!-- <image src='/resources/images/usernone.png'></image> -->
     </view>
     <view class='center'>
-      <view class='f12 clr_lightGray'>苏州市相城区白金汉爵酒店会议厅401-406</view>
+      <view class='f12 clr_lightGray'>{{productData.info.activityAddr}}</view>
     </view>
     <view class='right' style='border-left:1px solid #f5f5f5;padding-left:5px;'>
       <text class='iconfont icon-daohang1 baseColor'></text>
@@ -56,7 +56,7 @@
       <text class='iconfont icon-wo'></text>
     </view>
     <view class='center'>
-      <view class='f12 clr_lightGray'>400-963-8683</view>
+      <view class='f12 clr_lightGray'>{{productData.info.activityTel}}</view>
     </view>
     <view class='right' style='border-left:1px solid #f5f5f5;padding-left:5px;'>
       <text class='iconfont icon-dianhua baseColor'></text>
@@ -107,16 +107,16 @@
 
 <view class="tab">
   <view class="clr_lightGray f14 left">
-    <button open-type="contact" hover-class="none" class="f14" session-from="weapp" send-message-title="亲！我正在看这个商品" send-message-path="/pages/home/productDetails/productDetails?id={{productData.id}}" show-message-card="true" style='border-radius:0;border-right:1px solid #cfcfcf;'>
+    <button hover-class="none" class="f14" bindtap='goHome' style='border-radius:0;border-right:1px solid #cfcfcf;'>
       <image src="/resources/images/icon/home.png"></image>
     </button>
-    <view bindtap="toCart" style='position:relative;'>
+    <button open-type='share' style='border-radius:0;border-right:1px solid #cfcfcf;'>
       <image src="/resources/images/icon/share.png"></image>
       <text class="tips baseBg" wx:if="{{cartCount}}">{{cartCount}}</text>
-    </view>
+    </button>
   </view>
   <view class="clr-white f14 right">
-    <view style="background:#7972a9;" data-type="cart" bindtap="toggleMask">
+    <view style="background:#7972a9;" data-type="cart" bindtap="modalinput">
       报名
     </view>
     <!-- <view style="background:#ff666a;" data-type="buy" bindtap="toggleMask">
@@ -124,3 +124,10 @@
     </view> -->
   </view>
 </view>
+
+<modal id="modal" hidden="{{hiddenmodalput}}" title="报名信息" confirm-text="提交" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm">
+  <!-- <input type='text' placeholder="姓名：" auto-focus/> -->
+  <input type='number' placeholder="请输入电话:" bindinput='mobile' maxlength='11' auto-focus="{{autoFoucs}}" style='color:#333;' />
+  <!-- <input type='text' placeholder="人数：" auto-focus/> -->
+  <!-- <input type='text' placeholder="时间：" auto-focus/> -->
+</modal>

@@ -18,13 +18,13 @@
     </video>
     <view class='category tc' hidden="{{(!data||data.length==0)||(name?!_swiper[name].videoShow:!_swiper['swiper'].videoShow)}}">
 
-      <text class="cetagory_btn f12 {{!(name?_swiper[name].videoShow:_swiper['swiper'].videoShow) ? 'active' : ''}}"  hidden='{{videoUrl == null}}' data-name="{{name?name:'swiper'}}" data-type="1" bindtap="_swiper_video_toogle">视频</text>
+      <text class="cetagory_btn f12 {{!(name?_swiper[name].videoShow:_swiper['swiper'].videoShow) ? 'active' : ''}}" hidden='{{videoUrl == null}}' data-name="{{name?name:'swiper'}}" data-type="1" bindtap="_swiper_video_toogle">视频</text>
 
       <text class="cetagory_btn f12 {{(name?_swiper[name].videoShow:_swiper['swiper'].videoShow) ? 'active' : ''}}" hidden="{{videoUrl == null}}" data-type="2" bindtap="_swiper_video_toogle">图片</text>
     </view>
     <swiper hidden="{{(!data||data.length==0)||(name?!_swiper[name].videoShow:!_swiper['swiper'].videoShow)}}" circular indicator-active-color="rgba(255,255,255,0.6)" indicator-dots="{{showDot?showDot:false}}" autoplay="{{autoplay?autoplay:true}}" interval="{{interval?interval:2000}}"
       style="height:{{name?_swiper[name].height+'px':_swiper['swiper'].height+'px'}};" class="adSwiper">
-      <block wx:for="{{data}}" wx:key="{{key?key:*this}}">
+      <block wx:for="{{data}}" wx:key="{{key}}">
         <swiper-item>
           <image bindtap="{{fn?fn:'adSwiperTap'}}" data-linkId='{{item.linkId?item.linkId:""}}' data-name="{{name?name:'swiper'}}" bindload="_adswiperimageload" mode="widthFix" src="{{key?item[key]:item}}"></image>
         </swiper-item>
