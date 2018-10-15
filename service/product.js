@@ -11,7 +11,7 @@ module.exports = class Product extends Ajax {
   */
   list(data) {
     super.get({
-      url: 'topic/list',
+      url: 'index/index',
       data: data
     });
   }
@@ -23,7 +23,7 @@ module.exports = class Product extends Ajax {
    */
   view(data) {
     super.get({
-      url: 'topic/detail',
+      url: 'goods/detail',
       data: data
     });
   }

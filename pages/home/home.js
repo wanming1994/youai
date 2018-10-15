@@ -79,7 +79,7 @@ Page(Object.assign({}, swiperAutoHeight, {
     }
     new Product(function (data) {
       that.setData({
-        productHotList: data.data.data
+        productHotList: data.data.hotGoodsList
       })
       // console.log(data)
     }).list()
@@ -102,7 +102,7 @@ Page(Object.assign({}, swiperAutoHeight, {
           showtips: false
         })
       } else {
-        productHotList = productHotList.concat(res.data.data)
+        productHotList = productHotList.concat(res.data.hotGoodsList)
         that.setData({
           productHotList: productHotList,
           loading: false,

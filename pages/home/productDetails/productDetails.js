@@ -12,29 +12,13 @@ Page(Object.assign({}, swiperAutoHeight, {
    */
   data: {
     goodsAmount: 1,
-    sys: app.globalData.sys,//系统信息
-    productData: {},//数据
-    pageLoad: false,//页面加载完成
-    productData:
-    {
-      gallery: [
-        {
-          img_url: 'https://www.sincereglobe.com/IMAGE/BANNER1.jpg',
-        },
-        {
-          img_url:'https://www.sincereglobe.com/IMAGE/BANNER2.jpg'
-        }
-        
-      ]
-
-
-    }
-
-
+    sys: app.globalData.sys, //系统信息
+    productData: {}, //数据
+    pageLoad: false, //页面加载完成
 
   },
 
-  onLoad: function (options) {
+  onLoad: function(options) {
     // if (app.globalData.LOGIN_STATUS) {
     //   this.getData(options)
     // } else {
@@ -44,19 +28,20 @@ Page(Object.assign({}, swiperAutoHeight, {
     // }
     this.getData(options)
   },
-  getData(options){
+  getData(options) {
     let that = this;
     let id = options.id;
     this.data.id = id;
     var extension = options.extension;
     new Product((res) => {
       wx.setNavigationBarTitle({
-        title: res.data.title
+        title: res.data.info.name
       })
-      var introduction = res.data.content
+      var introduction = res.data.info.goods_desc
       this.setData({
         productData: res.data,
-        introduction: res.data.content
+        introduction: res.data.info.goods_desc,
+
       })
 
       if (introduction != null) {
@@ -73,9 +58,9 @@ Page(Object.assign({}, swiperAutoHeight, {
   },
 
   /**
-  * 页面上拉触底事件的处理函数
-  */
-  onReachBottom: function () {
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function() {
 
   },
 
