@@ -28,20 +28,21 @@ Page(Object.assign({}, swiperAutoHeight, {
       })
     } else {
       new member(res => {
-        if (this.data.productData.enroll == 1) {
-          wx.showToast({
-            title: '您已报名',
-            icon: 'none'
-          })
-        } else {
-          wx.navigateTo({
-            url: '/pages/enroll/index?id=' + this.data.productData.info.id,
-          })
-        }
+
       }).updateView({
         avatarUrl: e.detail.userInfo.avatarUrl,
-        nickName: e.detail.userInfo.nickName /*  */
+        nickName: e.detail.userInfo.nickName
       })
+      if (this.data.productData.enroll == 1) {
+        wx.showToast({
+          title: '您已报名',
+          icon: 'none'
+        })
+      } else {
+        wx.navigateTo({
+          url: '/pages/enroll/index?id=' + this.data.productData.info.id,
+        })
+      }
     }
   },
   //点击按钮痰喘指定的hiddenmodalput弹出框
