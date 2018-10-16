@@ -8,7 +8,7 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "1.9.1",
+	"libVersion": "2.3.0",
 	"appid": "wx1b0f64f8d2aabe65",
 	"projectname": "%E6%98%8E%E5%9F%BA%E5%AD%95%E5%A6%88",
 	"svr": "",
@@ -94,6 +94,12 @@
 					"name": "pages/home/productDetails/productDetails",
 					"pathName": "pages/home/productDetails/productDetails",
 					"query": "id=314"
+				},
+				{
+					"id": -1,
+					"name": "报名",
+					"pathName": "pages/enroll/index",
+					"query": ""
 				}
 			]
 		}

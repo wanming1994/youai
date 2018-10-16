@@ -2,7 +2,8 @@
   "pages": [
     "pages/home/home",
     "pages/home/productDetails/productDetails",
-    "pages/member/member"
+    "pages/member/member",
+    "pages/enroll/index"
   ],
   "tabBar": {
     "color": "#7f91a7",

@@ -58,7 +58,7 @@
     <view class='center'>
       <view class='f12 clr_lightGray'>{{productData.info.activityTel}}</view>
     </view>
-    <view class='right' style='border-left:1px solid #f5f5f5;padding-left:5px;'>
+    <view class='right' style='border-left:1px solid #f5f5f5;padding-left:5px;' bindtap='callUs'>
       <text class='iconfont icon-dianhua baseColor'></text>
     </view>
   </view>
@@ -116,9 +116,9 @@
     </button>
   </view>
   <view class="clr-white f14 right">
-    <view style="background:#7972a9;" data-type="cart" bindtap="modalinput">
+    <button style="background:#7972a9;" data-type="cart"  open-type='getUserInfo' bindgetuserinfo="bindgetuserinfo">
       报名
-    </view>
+    </button>
     <!-- <view style="background:#ff666a;" data-type="buy" bindtap="toggleMask">
       立即购买
     </view> -->

@@ -9,12 +9,7 @@ let swiperAutoHeight = require("../../template/swiper/swiper.js"),
   Ad = require("../../service/ad.js"),
   app = getApp(),
   util = require("../../utils/util.js")
-
 Page(Object.assign({}, swiperAutoHeight, {
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     imgUrls: [
       'https://www.sincereglobe.com/IMAGE/BANNER1.jpg',
@@ -24,9 +19,12 @@ Page(Object.assign({}, swiperAutoHeight, {
     autoplay: true,
     interval: 4000,
     duration: 1000,
-    page: 1
+    winHeight: wx.getSystemInfoSync().windowHeight,
+    showIndex: 0,
+    isShow: false,
+    startTouches: {},
+    moveTouches: {},
   },
-
   //邀请
   joinUs: function () {
     new member(function (res) {
@@ -62,14 +60,13 @@ Page(Object.assign({}, swiperAutoHeight, {
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // if (app.globalData.LOGIN_STATUS) {
-    //   this.getData(options)
-    // } else {
-    //   app.loginOkCallbackList.push(() => {
-    //     this.getData(options)
-    //   })
-    // }
-    this.getData(options)
+    if (app.globalData.LOGIN_STATUS) {
+      this.getData(options)
+    } else {
+      app.loginOkCallbackList.push(() => {
+        this.getData(options)
+      })
+    }
   },
 
   getData: function (options) {
@@ -85,38 +82,45 @@ Page(Object.assign({}, swiperAutoHeight, {
     }).list()
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  wrapScroll(e) {
+    if (e.detail.scrollTop >= 95) {
+      this.setData({
+        isShow: true
+      })
+    }
   },
-  onReachBottom() {
-    var that = this;
-    var page = this.data.page;
-    var productHotList = this.data.productHotList;
-    new Product((res) => {
-      if (res.data.data.length == 0) {
-        that.setData({
-          tips: '没有更多啦~',
-          showtips: false
+  touchStart(e) {
+    this.data.startTouches = e.changedTouches[0]
+  },
+  touchMove(e) {
+    this.data.moveTouches = e.changedTouches[0]
+  },
+  touchEnd(e) {
+    // if (!this.data.isShow) return
+    // console.log(e)
+    let startTouch = this.data.startTouches,
+      Y = e.changedTouches[0].pageY - startTouch.pageY,
+      X = Math.abs(e.changedTouches[0].pageX - startTouch.pageX)
+    this.data.endTouches = e.changedTouches[0]
+    if (X > 200) return
+    if (Y > 50) {
+      if (this.data.showIndex === 0) {
+        this.setData({
+          isShow: false
         })
-      } else {
-        productHotList = productHotList.concat(res.data.hotGoodsList)
-        that.setData({
-          productHotList: productHotList,
-          loading: false,
-          tips: res.data.data.length < 10 ? '没有更多啦' : '正在加载...',
-          showtips: false,
-          page: page
-        })
+        return
       }
-    }).list({
-      size: 10,
-      page: ++page
-    });
+      this.setData({
+        showIndex: --this.data.showIndex
+      })
+      // console.log('下拉')
+    } else if (Y < -50 && this.data.showIndex < this.data.productHotList.length - 1) {
+      this.setData({
+        showIndex: ++this.data.showIndex
+      })
+      // console.log('上拉')
+    }
   },
-
   //分享
   onShareAppMessage: function (res) {
     var that = this;

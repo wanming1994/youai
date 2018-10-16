@@ -1,6 +1,7 @@
 let swiperAutoHeight = require("../../../template/swiperProduct/swiper.js"),
   Cart = require("../../../service/cart.js"),
   Product = require("../../../service/product.js"),
+  member = require("../../../service/member.js"),
   order = require("../../../service/order.js"),
   WxParse = require('../../wxParse/wxParse.js'),
   app = getApp(),
@@ -18,12 +19,47 @@ Page(Object.assign({}, swiperAutoHeight, {
     hiddenmodalput: true,
     autoFoucs: false
   },
+  bindgetuserinfo(e) {
+    let that = this
+    if (e.detail.errMsg.indexOf('fail') > -1) {
+      wx.showToast({
+        title: '请授权用户信息!',
+        icon: 'none'
+      })
+    } else {
+      new member(res => {
+        if (this.data.productData.enroll == 1) {
+          wx.showToast({
+            title: '您已报名',
+            icon: 'none'
+          })
+        } else {
+          wx.navigateTo({
+            url: '/pages/enroll/index?id=' + this.data.productData.info.id,
+          })
+        }
+      }).updateView({
+        avatarUrl: e.detail.userInfo.avatarUrl,
+        nickName: e.detail.userInfo.nickName /*  */
+      })
+    }
+  },
   //点击按钮痰喘指定的hiddenmodalput弹出框
   modalinput: function() {
-    this.setData({
-      hiddenmodalput: !this.data.hiddenmodalput,
-      autoFoucs: true
-    })
+    // this.setData({
+    //   hiddenmodalput: !this.data.hiddenmodalput,
+    //   autoFoucs: true
+    // })
+    if (this.data.productData.enroll == 1) {
+      wx.showToast({
+        title: '您已报名',
+        icon: 'none'
+      })
+    } else {
+      wx.navigateTo({
+        url: '/pages/enroll/index?id=' + this.data.productData.info.id,
+      })
+    }
   },
   //取消按钮
   cancel: function() {
@@ -34,22 +70,24 @@ Page(Object.assign({}, swiperAutoHeight, {
   },
   //确认
   confirm: function() {
-    var phone = this.data.mobile
-    if (!(/^1[3456789]\d{9}$/.test(phone))) {
-      wx.showToast({
-        title: '手机号错误',
-        icon: 'none'
-      })
-    } else {
-      this.setData({
-        hiddenmodalput: true,
-        autoFoucs: false
-      })
-      wx.showToast({
-        title: '报名成功',
-        icon: 'success'
-      })
-    }
+
+
+    // var phone = this.data.mobile
+    // if (!(/^1[3456789]\d{9}$/.test(phone))) {
+    //   wx.showToast({
+    //     title: '手机号错误',
+    //     icon: 'none'
+    //   })
+    // } else {
+    //   this.setData({
+    //     hiddenmodalput: true,
+    //     autoFoucs: false
+    //   })
+    //   wx.showToast({
+    //     title: '报名成功',
+    //     icon: 'success'
+    //   })
+    // }
   },
   mobile(e) {
     this.setData({
@@ -98,7 +136,13 @@ Page(Object.assign({}, swiperAutoHeight, {
       id: id
     })
   },
-
+  //联系我们
+  callUs: function() {
+    var that = this
+    wx.makePhoneCall({
+      phoneNumber: that.data.productData.info.activityTel,
+    })
+  },
   /**
    * 页面上拉触底事件的处理函数
    */

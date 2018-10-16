@@ -1,0 +1,38 @@
+<view class='container'>
+  <view class='wrapper'>
+    <view class='tc title'>报名表</view>
+    <view class='itemInput'>
+      <view class='itemleft'>妈妈姓名</view>
+      <view class='itemcenter'>
+        <input bindinput='name' type='text'></input>
+      </view>
+    </view>
+    <view class='itemInput'>
+      <view class='itemleft'>电话</view>
+      <view class='itemcenter'>
+        <input bindinput='tel' maxlength='11' type='number'></input>
+      </view>
+    </view>
+    <view class='itemInput'>
+      <view class='itemleft'>预产期</view>
+      <view class='itemcenter'>
+        <picker mode="date" value="{{nowyear}}-{{nowmonth}}-{{nowdate}}" start="2015-09-01" end="{{nowyear}}-{{nowmonth}}-{{nowdate}}" fields="day" bindchange="expectedDate">
+          <input placeholder='选择日期' value='{{expectedDate}}' disabled>
+          </input>
+        </picker>
+      </view>
+    </view>
+    <view class='itemInput'>
+      <view class='itemleft'>宝宝生日</view>
+      <view class='itemcenter'>
+        <picker mode="date" value="{{nowyear}}-{{nowmonth}}-{{nowdate}}" start="2015-09-01" end="{{nowyear}}-{{nowmonth}}-{{nowdate}}" fields="day" bindchange="birthDate">
+          <input placeholder='选择日期' value='{{birthDate}}' disabled>
+          </input>
+        </picker>
+      </view>
+    </view>
+  </view>
+  <view class='enroll' bindtap='submit'>
+    <image src='/resources/images/member/enroll.png'></image>
+  </view>
+</view>

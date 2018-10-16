@@ -35,43 +35,43 @@ Page({
     }).view()
 
     //优惠券数量
-    new coupon(function(data){
+    new coupon(function (data) {
       that.setData({
-        couponLength:data.data.length
+        couponLength: data.data.length
       })
     }).list()
 
-    if (!wx.getStorageSync("isGetUserInfo")) {
-      wx.getUserInfo({
-        success: function (res) {
-          new member(function () {
-            wx.setStorageSync("isGetUserInfo", true)
-          }, function () {
-            wx.setStorageSync("isGetUserInfo", true)
-          }).updateView({
-            userInfo: res.userInfo
-          })
-          // that.setData({
-          //   authSuccess: true,
-          //   userInfo: res.userInfo
-          // })
-        },
-        fail: function (err) {
-          wx.setStorageSync("isGetUserInfo", false)
-          if (err.errMsg.indexOf('auth') > -1) {
-            wx.showModal({
-              title: '提示',
-              content: '未授予用户信息权限，部分功能会受到限制，是否前往设置',
-              success: function (res) {
-                if (res.confirm) {
-                  wx.openSetting()
-                }
-              }
-            })
-          }
-        }
-      })
-    }
+    // if (!wx.getStorageSync("isGetUserInfo")) {
+    //   wx.getUserInfo({
+    //     success: function (res) {
+    //       new member(function () {
+    //         wx.setStorageSync("isGetUserInfo", true)
+    //       }, function () {
+    //         wx.setStorageSync("isGetUserInfo", true)
+    //       }).updateView({
+    //         userInfo: res.userInfo
+    //       })
+    //       // that.setData({
+    //       //   authSuccess: true,
+    //       //   userInfo: res.userInfo
+    //       // })
+    //     },
+    //     fail: function (err) {
+    //       wx.setStorageSync("isGetUserInfo", false)
+    //       if (err.errMsg.indexOf('auth') > -1) {
+    //         wx.showModal({
+    //           title: '提示',
+    //           content: '未授予用户信息权限，部分功能会受到限制，是否前往设置',
+    //           success: function (res) {
+    //             if (res.confirm) {
+    //               wx.openSetting()
+    //             }
+    //           }
+    //         })
+    //       }
+    //     }
+    //   })
+    // }
   },
   getGoods() {
     util.navigateTo({
@@ -88,10 +88,10 @@ Page({
   //积分兑换
   goExchange: function () {
     util.navigateTo({
-      url: 'member/exchange/exchange',
+      url: 'point/index',
     })
   },
-  goCoupon:function(){
+  goCoupon: function () {
     util.navigateTo({
       url: 'coupon/list',
     })
@@ -126,5 +126,30 @@ Page({
     util.navigateTo({
       url: 'order/order?id=' + id,
     })
-  }
+  },
+  bindgetuserinfo(e) {
+    let that = this
+    console.log(e)
+    if (e.detail.errMsg.indexOf('fail') > -1) {
+      wx.showToast({
+        title: '请授权用户信息!',
+        icon: 'none'
+      })
+    } else {
+      new member(res => {
+        wx.showToast({
+          title: '授权成功',
+          icon: 'none'
+        })
+        new member(function (data) {
+          that.setData({
+            memberInfo: data.data
+          })
+        }).view()
+      }).updateView({
+        avatarUrl: e.detail.userInfo.avatarUrl,
+        nickName: e.detail.userInfo.nickName/*  */
+      })
+    }
+  },
 })

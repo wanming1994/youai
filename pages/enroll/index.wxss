@@ -1,0 +1,44 @@
+/* pages/enroll/index.wxss */
+
+page {
+  background: #fff;
+}
+
+.wrapper {
+  width: 610rpx;
+  height: 630rpx;
+  background: #fdf7df;
+  position: relative;
+  top: 170rpx;
+  left: 70rpx;
+  border-radius: 10rpx;
+}
+
+.itemInput {
+  background: transparent;
+  border-bottom: 0;
+  margin-left: 80rpx;
+}
+
+.itemInput input {
+  border-bottom: 1px solid #333;
+}
+
+.title {
+  padding: 40rpx 0;
+  color: #9a824e;
+  font-size: 60rpx;
+}
+
+.enroll {
+  width: 226rpx;
+  height: 57rpx;
+  position: absolute;
+  bottom: 250rpx;
+  left: 262rpx;
+}
+
+.enroll image {
+  width: 100%;
+  height: 100%;
+}
