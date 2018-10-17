@@ -74,7 +74,8 @@ Page({
         name: this.data.name,
         tel: this.data.tel,
         expectedDate: this.data.expectedDate,
-        birthDate: this.data.birthDate
+        birthDate: this.data.birthDate,
+        extensionId: this.data.extensionId
       })
     }
 
@@ -84,7 +85,8 @@ Page({
    */
   onLoad: function(options) {
     this.setData({
-      productId: options.id
+      productId: options.id,
+      extensionId: options.extension ? options.extension : '-1'
     })
   },
 

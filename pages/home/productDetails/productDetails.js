@@ -35,7 +35,7 @@ Page(Object.assign({}, swiperAutoHeight, {
           })
         } else {
           wx.navigateTo({
-            url: '/pages/enroll/index?id=' + this.data.productData.info.id,
+            url: '/pages/enroll/index?id=' + this.data.productData.info.id + '&extension=' + this.data.extension,
           })
         }
       }).updateView({
@@ -51,14 +51,14 @@ Page(Object.assign({}, swiperAutoHeight, {
     //   hiddenmodalput: !this.data.hiddenmodalput,
     //   autoFoucs: true
     // })
-    if (this.data.productData.enroll == 1) {
+    if (this.data.productData.enroll != 1) {
       wx.showToast({
         title: '您已报名',
         icon: 'none'
       })
     } else {
       wx.navigateTo({
-        url: '/pages/enroll/index?id=' + this.data.productData.info.id,
+        url: '/pages/enroll/index?id=' + this.data.productData.info.id + '&extension=' + this.data.extension,
       })
     }
   },
@@ -116,7 +116,10 @@ Page(Object.assign({}, swiperAutoHeight, {
     let that = this;
     let id = options.id;
     this.data.id = id;
-    var extension = options.extension;
+    var extension = options.extension ? options.extension : '';
+    this.setData({
+      extension: extension
+    })
     new Product((res) => {
       wx.setNavigationBarTitle({
         title: res.data.info.name
@@ -153,6 +156,39 @@ Page(Object.assign({}, swiperAutoHeight, {
   onReachBottom: function() {
 
   },
-
+  onShareAppMessage: function(res) {
+    var that = this;
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+      return {
+        title: that.data.productData.info.name,
+        path: 'pages/home/productDetails/productDetails?id=' + that.data.id + '&extension=' + app.globalData.memberInfo.userId,
+        success: function(res) {
+          // 转发成功
+          wx.showToast({
+            title: '转发成功',
+            icon: 'success'
+          })
+        },
+        fail: function(res) {
+          // 转发失败
+        }
+      }
+    }
+    return {
+      title: that.data.productData.info.name,
+      path: 'pages/home/productDetails/productDetails?id=' + that.data.id + '&extension=' + app.globalData.memberInfo.userId,
+      success: function(res) {
+        // 转发成功
+        wx.showToast({
+          title: '转发成功',
+          icon: 'success'
+        })
+      },
+      fail: function(res) {
+        // 转发失败
+      }
+    }
+  },
 
 }))
