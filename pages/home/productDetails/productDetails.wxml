@@ -116,8 +116,8 @@
     </button>
   </view>
   <view class="clr-white f14 right">
-    <button style="background:#7972a9;" data-type="cart"  open-type='getUserInfo' bindgetuserinfo="bindgetuserinfo">
-      报名
+    <button style="background:#7972a9;" data-type="cart" open-type='getUserInfo' bindgetuserinfo="bindgetuserinfo">
+      {{productData.enroll?'已报名':'报名'}}
     </button>
     <!-- <view style="background:#ff666a;" data-type="buy" bindtap="toggleMask">
       立即购买

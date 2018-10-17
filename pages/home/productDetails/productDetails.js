@@ -28,21 +28,21 @@ Page(Object.assign({}, swiperAutoHeight, {
       })
     } else {
       new member(res => {
-
+        if (this.data.productData.enroll == 1) {
+          wx.showToast({
+            title: '您已报名',
+            icon: 'none'
+          })
+        } else {
+          wx.navigateTo({
+            url: '/pages/enroll/index?id=' + this.data.productData.info.id,
+          })
+        }
       }).updateView({
         avatarUrl: e.detail.userInfo.avatarUrl,
         nickName: e.detail.userInfo.nickName
       })
-      if (this.data.productData.enroll == 1) {
-        wx.showToast({
-          title: '您已报名',
-          icon: 'none'
-        })
-      } else {
-        wx.navigateTo({
-          url: '/pages/enroll/index?id=' + this.data.productData.info.id,
-        })
-      }
+
     }
   },
   //点击按钮痰喘指定的hiddenmodalput弹出框
@@ -96,11 +96,14 @@ Page(Object.assign({}, swiperAutoHeight, {
     })
   },
   onLoad: function(options) {
+    this.options = options
+  },
+  onShow() {
     if (app.globalData.LOGIN_STATUS) {
-      this.getData(options)
+      this.getData(this.options)
     } else {
       app.loginOkCallbackList.push(() => {
-        this.getData(options)
+        this.getData(this.options)
       })
     }
   },

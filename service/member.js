@@ -29,7 +29,7 @@ module.exports = class Member extends Ajax {
    * 更新用户基本信息
    */
   updateView(data) {
-    super.get({
+    super.post({
       url: 'user/update',
       hideErrorTip: true,
       data: data
@@ -37,8 +37,8 @@ module.exports = class Member extends Ajax {
   }
 
   /**
- * 影响力接口
- */
+   * 影响力接口
+   */
   userRecommend(data) {
     super.get({
       url: 'user/userRecommend',
