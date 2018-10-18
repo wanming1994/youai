@@ -26,8 +26,8 @@ Page(Object.assign({}, swiperAutoHeight, {
     moveTouches: {},
   },
   //邀请
-  joinUs: function () {
-    new member(function (res) {
+  joinUs: function() {
+    new member(function(res) {
       if (res.data.userIsMember == 1) {
         util.navigateTo({
           url: '/pages/member/share/share'
@@ -41,14 +41,14 @@ Page(Object.assign({}, swiperAutoHeight, {
   },
 
   //视频
-  goVideo: function () {
+  goVideo: function() {
     util.navigateTo({
       url: '/pages/home/video/video',
     })
   },
 
   //商品详情
-  goProductDeatil: function (e) {
+  goProductDeatil: function(e) {
     var id = e.currentTarget.dataset.id;
     util.navigateTo({
       url: '/pages/home/productDetails/productDetails?id=' + id,
@@ -59,7 +59,7 @@ Page(Object.assign({}, swiperAutoHeight, {
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     if (app.globalData.LOGIN_STATUS) {
       this.getData(options)
     } else {
@@ -69,12 +69,12 @@ Page(Object.assign({}, swiperAutoHeight, {
     }
   },
 
-  getData: function (options) {
+  getData: function(options) {
     var that = this;
     if (options.extension) {
       wx.setStorageSync('extension', options.extension)
     }
-    new Product(function (data) {
+    new Product(function(data) {
       that.setData({
         productHotList: data.data.hotGoodsList
       })
@@ -122,23 +122,23 @@ Page(Object.assign({}, swiperAutoHeight, {
     }
   },
   //分享
-  onShareAppMessage: function (res) {
+  onShareAppMessage: function(res) {
     var that = this;
     if (res.from === 'button') {
       // 来自页面内转发按钮
 
     }
     return {
-      title: '邀请您加入大王纸尿裤',
+      title: '邀请您加入U2母婴加油站',
       path: 'pages/home/home?extension=' + app.globalData.memberInfo.userId,
-      success: function (res) {
+      success: function(res) {
         // 转发成功
         wx.showToast({
           title: '转发成功',
           icon: 'success'
         })
       },
-      fail: function (res) {
+      fail: function(res) {
         // 转发失败
       }
     }
