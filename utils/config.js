@@ -1,6 +1,6 @@
 module.exports = {
   //ajax请求baseurl
-  BASE_URL: "https://www.estongsoft.com/platform-admin/api/",
+  BASE_URL: "https://www.babyserver.cn/platform-admin/api/",
   //登陆失败后尝试重复登陆次数
   LOGIN_ERROR_TRY_COUNT: 5,
   //登陆失败后多长时间间隔重新发起登陆请求
@@ -10,5 +10,5 @@ module.exports = {
   //上传临时文件接口地址
   UPLOAD_TEMP_URL: "applet/file/upload_temp.jhtml",
   //小程序id
-  APPID: "wxd32c6f0a8ce28e23"
+  APPID: "wxfbfdc635a410d7b4"
 }

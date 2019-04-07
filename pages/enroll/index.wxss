@@ -4,6 +4,10 @@ page {
   background: #fff;
 }
 
+.container {
+  position: relative;
+}
+
 .wrapper {
   width: 610rpx;
   height: 630rpx;
@@ -12,6 +16,7 @@ page {
   top: 170rpx;
   left: 70rpx;
   border-radius: 10rpx;
+  z-index: 100;
 }
 
 .itemInput {
@@ -36,6 +41,7 @@ page {
   position: absolute;
   bottom: 250rpx;
   left: 262rpx;
+  z-index: 100;
 }
 
 .enroll image {

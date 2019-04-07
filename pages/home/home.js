@@ -129,7 +129,7 @@ Page(Object.assign({}, swiperAutoHeight, {
 
     }
     return {
-      title: '邀请您加入U2母婴加油站',
+      title: '邀请您加入MOM母婴加油站',
       path: 'pages/home/home?extension=' + app.globalData.memberInfo.userId,
       success: function(res) {
         // 转发成功

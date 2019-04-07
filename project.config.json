@@ -9,12 +9,8 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.3.0",
-	"appid": "wx1b0f64f8d2aabe65",
+	"appid": "wxfbfdc635a410d7b4",
 	"projectname": "%E6%98%8E%E5%9F%BA%E5%AD%95%E5%A6%88",
-	"svr": "",
-	"client": "",
-	"qcloudRoot": "",
-	"miniprogramRoot": "",
 	"condition": {
 		"search": {
 			"current": -1,

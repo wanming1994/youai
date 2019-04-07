@@ -35,4 +35,5 @@
   <view class='enroll' bindtap='submit'>
     <image src='/resources/images/member/enroll.png'></image>
   </view>
+  <image src='http://120.27.221.38/IMAGE/bm.jpg' style='position:absolute;width:750rpx;height:100vh;top:0;'></image>
 </view>
