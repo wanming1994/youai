@@ -2,6 +2,7 @@
   "pages": [
     "pages/home/home",
     "pages/home/productDetails/productDetails",
+    "pages/home/productDetails/poster/poster",
     "pages/member/member",
     "pages/enroll/index"
   ],

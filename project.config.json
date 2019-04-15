@@ -1,14 +1,14 @@
 {
 	"description": "项目配置文件。",
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.3.0",
+	"libVersion": "2.6.5",
 	"appid": "wxfbfdc635a410d7b4",
 	"projectname": "%E6%98%8E%E5%9F%BA%E5%AD%95%E5%A6%88",
 	"condition": {
@@ -29,7 +29,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 12,
 			"list": [
 				{
 					"id": -1,
@@ -102,6 +102,12 @@
 					"name": "兑换历史",
 					"pathName": "pages/home/productDetails/productDetails",
 					"query": "id=1181240&extension=1699"
+				},
+				{
+					"id": -1,
+					"name": "海报",
+					"pathName": "pages/home/productDetails/poster/poster",
+					"query": "id=1181242"
 				}
 			]
 		}

@@ -160,5 +160,14 @@ module.exports = class Product extends Ajax {
     });
   }
 
-
+  /**
+   * 生成二维码
+   */
+  createUserQRCode(data) {
+    super.get({
+      url: 'goods/createGoodsQRCode',
+      hideErrorTip: true,
+      data: data
+    })
+  }
 }

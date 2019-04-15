@@ -190,5 +190,11 @@ Page(Object.assign({}, swiperAutoHeight, {
       }
     }
   },
+  //海报分享
+  goShareCircle() {
+    wx.navigateTo({
+      url: 'poster/poster?id=' + this.data.id,
+    })
+  },
 
 }))
