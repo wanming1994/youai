@@ -30,49 +30,57 @@ Page(Object.assign({}, {
     var id = options.id
     var that = this;
     new product(resp => {
-      var res1 = resp.data.info.shareUrl ? resp.data.info.shareUrl : '/resources/images/product/poster.png'
-      var headImg = '',
-        picImg = '';
-      new product((res) => {
-        wx.downloadFile({
-          url: res.data,
-          // url:'https://www.sincereglobe.com/IMAGE/goodsQRCode/2646_1555329656233e2f2c8c4-8796-4c97-a965-b9b71ffd622a.png',
-          success: function(res) {
-            that.setData({
-              qrcode: res.tempFilePath
-            })
-            wx.getSystemInfo({
+      // var res1 = resp.data.info.shareUrl ? resp.data.info.shareUrl : '/resources/images/product/poster.png'
+      wx.downloadFile({
+        url: resp.data.info.shareUrl ? resp.data.info.shareUrl : '/resources/images/product/poster.png',
+        success: function(resB) {
+          that.setData({
+            resBg: resB.tempFilePath
+          })
+          var headImg = '',
+            picImg = '';
+          new product((res) => {
+            wx.downloadFile({
+              url: res.data,
               success: function(res) {
                 that.setData({
-                  canvasw: res.windowWidth + 'px',
-                  canvash: res.windowHeight + 'px'
+                  qrcode: res.tempFilePath
                 })
-                var w = res.windowWidth;
-                var h = res.windowHeight;
-                const ctx = wx.createCanvasContext('myCanvas')
-                ctx.setFillStyle('rgb(255, 255, 255)')
-                ctx.fillRect(0, 0, w, h)
-                ctx.drawImage(res1, 0, 0, w, h) //背景图大
-                ctx.save();
-                ctx.beginPath()
-                ctx.drawImage(that.data.qrcode, 0.1 * w, 0.81 * h, 0.3 * w, 0.3 * w) //小程序二维码
-                ctx.draw();
-                setTimeout(function() {
-                  wx.showModal({
-                    title: '提示',
-                    content: '长按可保存海报至相册，再去分享朋友圈',
-                  })
-                }, 500)
-              },
-              fail: function(e) {
-                console.log(e)
+                wx.getSystemInfo({
+                  success: function(res) {
+                    that.setData({
+                      canvasw: res.windowWidth + 'px',
+                      canvash: res.windowHeight + 'px'
+                    })
+                    var w = res.windowWidth;
+                    var h = res.windowHeight;
+                    const ctx = wx.createCanvasContext('myCanvas')
+                    ctx.setFillStyle('rgb(255, 255, 255)')
+                    ctx.fillRect(0, 0, w, h)
+                    ctx.drawImage(that.data.resBg, 0, 0, w, h) //背景图大
+                    ctx.save();
+                    ctx.beginPath()
+                    ctx.drawImage(that.data.qrcode, 0.1 * w, 0.80 * h, 0.3 * w, 0.3 * w) //小程序二维码
+                    ctx.draw();
+                    setTimeout(function() {
+                      wx.showModal({
+                        title: '提示',
+                        content: '长按可保存海报至相册，再去分享朋友圈',
+                      })
+                    }, 500)
+                  },
+                  fail: function(e) {
+                    console.log(e)
+                  }
+                })
               }
             })
-          }
-        })
-      }).createUserQRCode({
-        goodsId: options.id
+          }).createUserQRCode({
+            goodsId: options.id
+          })
+        }
       })
+
     }).view({
       id: options.id
     })
