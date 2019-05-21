@@ -1,0 +1,10 @@
+<!--pages/member/activity/index.wxml-->
+<view>
+  <view class='lineItem' wx:for="{{data}}" wx:key="{{item.id}}" bindtap='goView' data-id="{{item.goods_id}}">
+    <view class='left'>
+      <image src='{{item.list_pic_url?item.list_pic_url:"/resources/images/noneimg.png"}}'></image>
+    </view>
+    <view class='center f14'>{{item.goods_name}}</view>
+    <view class='right'></view>
+  </view>
+</view>

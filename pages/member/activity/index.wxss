@@ -1,0 +1,12 @@
+/* pages/member/activity/index.wxss */
+
+.lineItem .left {
+  width: 20vw;
+  height: 30vw;
+  margin-right: 2vw;
+}
+
+.lineItem .left image {
+  width: 100%;
+  height: 100%;
+}

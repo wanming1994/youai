@@ -97,4 +97,28 @@ module.exports = class Member extends Ajax {
     })
   }
 
+  /**
+   * 参加活动列表
+   *  getCart
+   */
+  getCart(data) {
+    super.get({
+      url: "cart/getCart",
+      data: data
+    })
+  }
+
+  /**
+   * 参加活动列表
+   *  activityId
+   */
+  getFollow(data) {
+    super.get({
+      url: "cart/getFollow",
+      data: data
+    })
+  }
+
+
+
 }

@@ -4,6 +4,8 @@
     "pages/home/productDetails/productDetails",
     "pages/home/productDetails/poster/poster",
     "pages/member/member",
+    "pages/member/activity/index",
+    "pages/member/activity/view",
     "pages/enroll/index"
   ],
   "tabBar": {
