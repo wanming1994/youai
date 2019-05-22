@@ -16,7 +16,9 @@ Page({
    */
   onLoad: function(options) {
     new member(res => {
-
+      this.setData({
+        data: res.data
+      })
     }).getFollow({
       activityId: options.id
     })

@@ -1,2 +1,8 @@
 <!--pages/member/activity/view.wxml-->
-<text>pages/member/activity/view.wxml</text>
+<view class='lineItem' wx:for="{{data}}" wx:key="{{item.userId}}">
+  <view class='left'>
+    <image src='{{item.avatar?item.avatar:"/resources/images/noneimg/png"}}'></image>
+  </view>
+  <view class='center f14'>{{item.nickname}}</view>
+  <view class='right'></view>
+</view>
