@@ -133,3 +133,25 @@
   <!-- <input type='text' placeholder="人数：" auto-focus/> -->
   <!-- <input type='text' placeholder="时间：" auto-focus/> -->
 </modal>
+<view class="actionMask" wx:if="{{showShortcut}}" bindtap="toggleshowShortcut"></view>
+<view class='shortcut f12' bindtap='openShortcut' wx:if="{{!showShortcut}}">
+  <view>分享</view>
+  <view>商品</view>
+</view>
+<view class='shortcut shortcutClose' bindtap='openShortcut' wx:if="{{showShortcut}}">
+  <image src='/resources/images/product/close.png'></image>
+</view>
+<view class='shortcutInfo f12'>
+  <view class="shortcutContent {{showShortcut&&'showShortcutContent'}}">
+    <view class='tr shortcutInfoList'>
+      <text>分享好友</text>
+      <button open-type='share'>
+        <image src='/resources/images/product/friends.png'></image>
+      </button>
+    </view>
+    <view class='tr shortcutInfoList' bindtap='goShareCircle'>
+      海报分享
+      <image src='/resources/images/product/circle.png'></image>
+    </view>
+  </view>
+</view>

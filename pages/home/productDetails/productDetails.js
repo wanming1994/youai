@@ -196,5 +196,10 @@ Page(Object.assign({}, swiperAutoHeight, {
       url: 'poster/poster?id=' + this.data.id,
     })
   },
-
+  //快捷导航点击事件
+  openShortcut: function() {
+    this.setData({
+      showShortcut: !this.data.showShortcut
+    })
+  }
 }))
